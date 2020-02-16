@@ -7,3 +7,7 @@ ansible_nas_hostname: vagrant-test
 
 # System Management
 heimdall_enabled: true
+
+# User ID/Group ID used for "samba_shares_root" share
+ansible_nas_uid: 1002
+ansible_nas_gid: 1002
