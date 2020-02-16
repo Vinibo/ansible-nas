@@ -1,0 +1,8 @@
+import:
+  copy: no
+  move: yes
+
+plugins: {{ beets_plugins }}
+
+web:
+    host: 0.0.0.0

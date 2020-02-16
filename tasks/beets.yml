@@ -1,4 +1,16 @@
 ---
+- name: Create beets config directory
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ beets_config_directory }}"
+
+- name: Template beets configuration
+  template:
+    src: beets/config.yaml
+    dest: "{{ beets_config_directory }}/config.yaml"
+
 - name: Beets
   docker_container:
     name: beets
@@ -6,10 +18,10 @@
     pull: true
     volumes:
       - "{{ beets_config_directory }}:/config:rw"
-      - "{{ emby_movies_directory }}:/movies:{{ emby_movies_permissions }}"
+      - "{{ music_root }}:/music:rw"
+      - "{{ downloads_root }}:/downloads:ro"
     ports:
       - "{{ beets_port_http }}:8337"
-    network_mode: host
     env:
       TZ: "{{ ansible_nas_timezone }}"
       PUID: "{{ beets_user_id }}"
@@ -17,7 +29,7 @@
     restart_policy: unless-stopped
     memory: 1g
     labels:
-      traefik.backend: "emby"
-      traefik.frontend.rule: "Host:emby.{{ ansible_nas_domain }}"
-      traefik.enable: "{{ emby_available_externally }}"
+      traefik.backend: "beets"
+      traefik.frontend.rule: "Host:beets.{{ ansible_nas_domain }}"
+      traefik.enable: "{{ beets_available_externally }}"
       traefik.port: "8096"

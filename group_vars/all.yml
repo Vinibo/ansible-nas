@@ -42,6 +42,7 @@ lidarr_enabled: false
 # Music
 airsonic_enabled: false
 mymediaforalexa_enabled: false
+beets_enabled: true
 
 # News
 miniflux_enabled: false
@@ -815,4 +816,9 @@ vd_rdp_port: 3389
 ###
 ### Beets
 ###
-
+beets_available_externally: "false"
+beets_config_directory: "{{ docker_home }}/beets/config"
+beets_port_http: 8337
+beets_user_id: "0"
+beets_group_id: "0"
+beets_plugins: "web bpm fetchart lyrics lastgenre duplicates"
