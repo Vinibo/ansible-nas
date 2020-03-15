@@ -1,6 +1,10 @@
 import:
   copy: no
   move: yes
+  language: en fr
+  duplicate_action: remove
+
+directory: /music
 
 plugins: {{ beets_plugins }}
 

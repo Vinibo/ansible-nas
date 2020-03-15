@@ -19,7 +19,7 @@
     volumes:
       - "{{ beets_config_directory }}:/config:rw"
       - "{{ music_root }}:/music:rw"
-      - "{{ downloads_root }}:/downloads:ro"
+      - "{{ beets_ingest_directory }}:/downloads:rw"
     ports:
       - "{{ beets_port_http }}:8337"
     env:
@@ -33,3 +33,25 @@
       traefik.frontend.rule: "Host:beets.{{ ansible_nas_domain }}"
       traefik.enable: "{{ beets_available_externally }}"
       traefik.port: "8096"
+
+- name: Declare Beets as service
+  copy:
+    src: files/beets/beets.service
+    dest: /etc/systemd/system/beets.service
+    mode: '0644'
+
+- name: Setup a 15 minute recurring timer for Beets
+  copy:
+    src: files/beets/beets.timer
+    dest: /etc/systemd/system/beets.timer
+    mode: '0644'
+
+- name: Enable timer for Beets import
+  systemd:
+    name: beets.timer
+    enabled: yes
+    state: started
+
+- name: Reload Systemd
+  systemd:
+    daemon_reload: yes

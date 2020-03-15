@@ -261,6 +261,15 @@ samba_shares:
     browsable: yes
     path: "{{ samba_shares_root }}/comics"
 
+  - name: import
+    comment: 'Beets music import'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ samba_shares_root }}/import"
+
+
 ###
 ### NFS
 ###
@@ -818,7 +827,8 @@ vd_rdp_port: 3389
 ###
 beets_available_externally: "false"
 beets_config_directory: "{{ docker_home }}/beets/config"
+beets_ingest_directory: "{{ samba_shares_root }}/import"
 beets_port_http: 8337
-beets_user_id: "0"
-beets_group_id: "0"
+beets_user_id: "999"
+beets_group_id: "1001"
 beets_plugins: "web bpm fetchart lyrics lastgenre duplicates"
