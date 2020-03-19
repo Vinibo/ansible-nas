@@ -3,7 +3,7 @@ Description=Execute Beets import
 After=docker.service
 
 [Service]
-ExecStart=/usr/bin/docker exec -t beets beet import /downloads -q
+ExecStart=/usr/bin/docker exec -t -u abc beets beet import /downloads -q
 
 [Install]
 WantedBy=multi-user.target
