@@ -831,4 +831,5 @@ beets_ingest_directory: "{{ samba_shares_root }}/import"
 beets_port_http: 8337
 beets_user_id: "999"
 beets_group_id: "1001"
-beets_plugins: "web bpm fetchart lyrics lastgenre duplicates"
+beets_plugins: "web bpm fetchart lyrics lastgenre duplicates smartplaylist"
+

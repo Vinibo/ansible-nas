@@ -10,3 +10,14 @@ plugins: {{ beets_plugins }}
 
 web:
     host: 0.0.0.0
+
+{% if beets_smartplaylists is defined %}
+smartplaylist:
+    relative_to: ~/music
+    playlist_dir: /music/playlist
+    playlists:
+{% for playlist in beets_smartplaylists %}
+      - name: "{{ playlist.name }}"
+        query: "{{ playlist.query }}"
+{% endfor %}
+{% endif %}
