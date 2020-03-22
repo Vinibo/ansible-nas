@@ -13,6 +13,7 @@ web:
 
 {% if beets_smartplaylists is defined %}
 smartplaylist:
+    source: track
     relative_to: ~/music
     playlist_dir: /music/playlist
     playlists:
