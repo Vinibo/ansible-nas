@@ -832,4 +832,5 @@ beets_port_http: 8337
 beets_user_id: "999"
 beets_group_id: "1001"
 beets_plugins: "web bpm fetchart lyrics lastgenre duplicates smartplaylist"
+beets_lastgenre_count: 1
 

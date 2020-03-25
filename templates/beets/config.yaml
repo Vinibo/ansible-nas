@@ -6,10 +6,16 @@ import:
 
 directory: /music
 
+paths:
+  singleton: $artist/$title
+
 plugins: {{ beets_plugins }}
 
 web:
     host: 0.0.0.0
+
+lastgenre:
+  count: {{ beets_lastgenre_count }}
 
 {% if beets_smartplaylists is defined %}
 smartplaylist:
