@@ -1,0 +1,30 @@
+import:
+  copy: no
+  move: yes
+  language: en fr
+  duplicate_action: remove
+
+directory: /music
+
+paths:
+  singleton: $artist/$title
+
+plugins: {{ beets_plugins }}
+
+web:
+    host: 0.0.0.0
+
+lastgenre:
+  count: {{ beets_lastgenre_count }}
+
+{% if beets_smartplaylists is defined %}
+smartplaylist:
+    source: track
+    relative_to: ~/music
+    playlist_dir: /music/playlist
+    playlists:
+{% for playlist in beets_smartplaylists %}
+      - name: "{{ playlist.name }}"
+        query: "{{ playlist.query }}"
+{% endfor %}
+{% endif %}

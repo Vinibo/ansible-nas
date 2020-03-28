@@ -42,6 +42,7 @@ lidarr_enabled: false
 # Music
 airsonic_enabled: false
 mymediaforalexa_enabled: false
+beets_enabled: false
 
 # News
 miniflux_enabled: false
@@ -267,6 +268,15 @@ samba_shares:
     writable: yes
     browsable: yes
     path: "{{ samba_shares_root }}/comics"
+
+  - name: import
+    comment: 'Beets music import'
+    guest_ok: yes
+    public: yes
+    writable: yes
+    browsable: yes
+    path: "{{ samba_shares_root }}/import"
+
 
 ###
 ### NFS
@@ -821,6 +831,18 @@ vd_users:
 vd_rdp_port: 3389
 
 ###
+### Beets
+###
+beets_available_externally: "false"
+beets_config_directory: "{{ docker_home }}/beets/config"
+beets_ingest_directory: "{{ samba_shares_root }}/import"
+beets_port_http: 8337
+beets_user_id: "0"
+beets_group_id: "0"
+beets_plugins: "web bpm fetchart lyrics lastgenre duplicates smartplaylist"
+beets_lastgenre_count: 1
+
+###
 ### Syncthing
 ###
 syncthing_ui_port: "8085"
@@ -830,3 +852,4 @@ syncthing_umask: "022"
 syncthing_config_directory: "{{ docker_home }}/syncthing"
 syncthing_data_directory: "{{ samba_shares_root }}"
 syncthing_available_externally: "false"
+
