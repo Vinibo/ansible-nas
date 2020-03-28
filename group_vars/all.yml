@@ -63,6 +63,7 @@ virtual_desktop_enabled: false
 duplicati_enabled: false
 nextcloud_enabled: false
 timemachine_enabled: false
+syncthing_enabled: false
 
 # Software build and CI
 gitea_enabled: false
@@ -113,6 +114,10 @@ traefik_port_ui: "8083"
 # Sets the hostname of your Ansible NAS
 ansible_nas_hostname: ansible-nas
 
+# User ID/Group ID used for "samba_shares_root" share
+ansible_nas_uid: 1001
+ansible_nas_gid: 1001
+
 # Sets the timezone for your Ansible NAS
 # You can find a list here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 ansible_nas_timezone: Etc/UTC
@@ -128,6 +133,9 @@ ansible_nas_email: me@example.com
 
 # Applications will have subdomain SSL certificates created if Traefik is enabled, e.g. ansible-nas.<your-domain>, nextcloud.<your-domain>
 ansible_nas_domain: example.com
+
+# Enable "ansible_nas_hostname".local DNS resolution on your local network
+avahi_enabled: false
 
 ###
 ### Docker
@@ -508,7 +516,7 @@ couchpotato_downloads_directory: "{{ downloads_root }}"
 couchpotato_torrents_directory: "{{ torrents_root }}"
 couchpotato_user_id: "0"
 couchpotato_group_id: "0"
-couchpotato_port: "5050" 
+couchpotato_port: "5050"
 
 ###
 ### Sickchill
@@ -833,4 +841,15 @@ beets_user_id: "0"
 beets_group_id: "0"
 beets_plugins: "web bpm fetchart lyrics lastgenre duplicates smartplaylist"
 beets_lastgenre_count: 1
+
+###
+### Syncthing
+###
+syncthing_ui_port: "8085"
+syncthing_data_port: "22000"
+syncthing_discovery_port: "21027"
+syncthing_umask: "022"
+syncthing_config_directory: "{{ docker_home }}/syncthing"
+syncthing_data_directory: "{{ samba_shares_root }}"
+syncthing_available_externally: "false"
 

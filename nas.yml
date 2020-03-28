@@ -25,6 +25,10 @@
   - import_tasks: tasks/general.yml
     tags: general
 
+  - import_tasks: tasks/avahi.yml
+    when: (avahi_enabled | default(False))
+    tags: avahi
+
   - import_tasks: tasks/docker.yml
     tags: docker
 
@@ -227,3 +231,7 @@
   - import_tasks: tasks/beets.yml
     when: (beets_enabled | default(False))
     tags: beets
+
+  - import_tasks: tasks/syncthing.yml
+    when: (syncthing_enabled | default(False))
+    tags: syncthing
