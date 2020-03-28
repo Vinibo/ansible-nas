@@ -42,7 +42,7 @@ lidarr_enabled: false
 # Music
 airsonic_enabled: false
 mymediaforalexa_enabled: false
-beets_enabled: true
+beets_enabled: false
 
 # News
 miniflux_enabled: false
