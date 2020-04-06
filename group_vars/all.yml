@@ -841,6 +841,7 @@ beets_user_id: "0"
 beets_group_id: "0"
 beets_plugins: "web bpm fetchart lyrics lastgenre duplicates smartplaylist"
 beets_lastgenre_count: 1
+beets_network_mode: "bridge" # bridge is default, local discovery doesnt work. `host` will work for local discovery
 
 ###
 ### Syncthing

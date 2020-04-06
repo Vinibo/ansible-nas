@@ -13,6 +13,7 @@
   docker_container:
     name: syncthing
     image: linuxserver/syncthing
+    network_mode: "{{ beets_network_mode }}"
     pull: true
     volumes:
       - "{{ syncthing_config_directory }}:/config:rw"
