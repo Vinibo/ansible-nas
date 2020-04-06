@@ -235,3 +235,7 @@
   - import_tasks: tasks/syncthing.yml
     when: (syncthing_enabled | default(False))
     tags: syncthing
+
+  - import_tasks: tasks/autocdripper.yml
+    when: (autocdripper_enabled | default(False))
+    tags: autocdripper

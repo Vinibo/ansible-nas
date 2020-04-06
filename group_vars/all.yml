@@ -43,6 +43,7 @@ lidarr_enabled: false
 airsonic_enabled: false
 mymediaforalexa_enabled: false
 beets_enabled: false
+autocdripper_enabled: false
 
 # News
 miniflux_enabled: false
@@ -854,3 +855,11 @@ syncthing_config_directory: "{{ docker_home }}/syncthing"
 syncthing_data_directory: "{{ samba_shares_root }}"
 syncthing_available_externally: "false"
 
+###
+### Auto CD Ripper
+###
+autocdripper_optical_drive_path: "/dev/sr0"
+#autocdripper_output_directory: "{{ samba_shares_root }}/music"
+autocdripper_output_directory: "{{ samba_shares_root }}/import" # To use with beets
+autocdripper_actions: "cddb,read,getalbumart,encode,tag,move,clean"
+autocdripper_eject_when_done: "y"
