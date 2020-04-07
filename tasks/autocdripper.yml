@@ -23,11 +23,6 @@
     dest: "/usr/share/autocdripper/cdripper.sh"
     mode: u+rx,g=rx,o=rx
 
-- name: Copy AutoCDRipper abcde configuration
-  copy:
-    src: files/autocdripper/abcde.conf
-    dest: "/usr/share/autocdripper/abcde.conf"
-
 - name: Template AutoCDRipper abcde configuration
   template:
     src: autocdripper/abcde.conf
